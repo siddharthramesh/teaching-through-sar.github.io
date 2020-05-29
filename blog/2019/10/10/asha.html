@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Siddharth Ramesh</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <link href="kudos.html" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+
+  <div id="container" class="logo"></div><header id="h_small"><nav id="nav_small"><a href="../../../../index.html#about-me">About Me</a><a href="../../../../index.html#Experenice">Experience</a><a href="../../../../index.html#Blog">Blog</a><a href="../../../../index.html#Details">Contact Me</a></nav></header>
+
+
+<script type="text/javascript">
+			// needs to be a string for jquery.cookie
+			var postId = '1';
+			$(function()
+			{
+				// initialize kudos
+				$("figure.kudoable").kudoable();
+				// check to see if user has already kudod
+				// fyi cookies do not work when you are viewing this as a file
+				if($.cookie(postId) == 'true') {
+					// make kudo already kudod
+					$("figure.kudoable").removeClass("animate").addClass("complete");
+					// your server would take care of the proper kudos count, but because this is a
+					// static page, we need to set it here so it doesn't become -1 when you remove
+					// the kudos after a reload
+					$(".num").html(1);
+				}
+				// when kudoing
+				$("figure.kudo").bind("kudo:active", function(e)
+				{
+					console.log("kudoing active");
+				});
+				// when not kudoing
+				$("figure.kudo").bind("kudo:inactive", function(e)
+				{
+					console.log("kudoing inactive");
+				});
+				// after kudo'd
+				$("figure.kudo").bind("kudo:added", function(e)
+				{
+					var element = $(this);
+					// ajax'y stuff or whatever you want
+					console.log("Kodo'd:", element.data('id'), ":)");
+					// set cookie so user cannot kudo again for 7 days
+					$.cookie(postId, 'true', { expires: 7 });
+				});
+				// after removing a kudo
+				$("figure.kudo").bind("kudo:removed", function(e)
+				{
+					var element = $(this);
+					// ajax'y stuff or whatever you want
+					console.log("Un-Kudo'd:", element.data('id'), ":(");
+					// remove cookie
+					$.removeCookie(postId);
+				});
+			});
+		</script>
+
+
+
+<div class="post-header">
+  <h1 class="post-title">Social Robotics For Autism Therapy <a style="color: #077D83; font-size: 20px;" href="Report.pdf">[Report.pdf]</a> </h1>
+</div>
+<div class="post-header">
+  <p class="post-meta"></p>
+</div>
+
+<div class="post-wrapper">
+
+
+
+  <article class="post-content">
+    <div class = "blurb-blog">
+    <h5 id="overview" style="font-size:30px;">Abstract</h5>
+<p align="justify" style="font-family:georgia,garamond,serif;font-size:17px;">
+<img style="float: left;"  src="assets/img/first.png">
+Most autistic children have prevalent problems during gross motor development. Children with deficient gross motor skills predominantly tend to develop Developmental Coordination Disorder(DCD). Panacea for DCD is to conduct physical and occupational therapy sessions for students. Autism educators encounter numerous challenges while conducting these therapy sessions. It is physically and mentally taxing for the instructors to conduct therapy sessions. Also, most autistic students hesitate to participate in therapy due to lack of motivation. Hence these therapy sessions are not found to be sufficiently effective. Social robotics is a field of robotics where robots are programmed to aid teachers in day to day teaching. Robots are enabled to interact with students and help them learn better. Drones, as a part of social robotics, were deployed for the first time in autism therapy sessions. The aim was to evaluate the benefits of using Drones as an interacting tool between the teachers and students for the betterment of these therapy sessions. A pre-post study was conducted to observe how Drones can help overcome the challenges faced by teachers to conduct these sessions effectively. The results of this study show that the Drone inclusive therapy sessions have proved to demonstrate significant benefits to the focused students who participated in this intervention with Drones.</p>
+
+<h5 id="Building a development" style="font-size:30px;">Gross motor skills(GMS) and its importance</h5>
+<div>
+   
+<p align="justify" style="font-family:georgia,garamond,serif;font-size:17px;">Gross Motor Skills (GMS):
+Skills those which require whole body movement and which involve the large (core stabilising) muscles of the body to perform everyday functions, such as standing and walking, running and jumping, and sitting upright at the table. They also includes eye-hand coordination skills such as ball skills (throwing, catching, kicking) as well as riding a bike or a scooter and swimming.  <br>
+Importance of Gross motor skills:<br>
+Gross motor abilities also have an influence on other everyday functions. For example, a child’s ability to maintain appropriate table top posture (upper body support) will affect their ability to participate in fine motor skills (e.g.writing, drawing and cutting) and sitting upright to attend to class instruction, which then impacts on their academic learning.<br>
+What is GMSD?<br>
+It is observed when a child is not rolling, crawling, walking, or doing other gross motor activities when the child is at the right age to do those things. <br>
+GMSD observed in Autistic kids:	<br>
+Studies have shown autistic children usually have varying degrees of difficulty with fine and gross motor skills.These are diffi-
+culties are believed to exist due to the neurological differences in autistic children and their challenges with sensory processing. Autistic kids with GMSD are observed with low energy levels, poor posture control, seem tired or lethargic and take longer to respond to stimuli around them. On the longer run, they tend to develop a condition called Developmental Coordination Disorder (DCD). DCD is a disorder that’s defined as an impairment in the learning of coordination and motor skills. The challenges of DCD impact many aspects of life.<br>
+
+Therapy for GMSD:<br>
+Early intervention with Physical and Occupational therapy is the primary treatment for GMSD. These therapy sessions involve
+a set of exercises and physical activities on a daily basis.<br>
+
+
+  </p>
+</div>
+<h5 id="design" style="font-size:30px;">Interaction with Institution where study was conducted</h5>
+
+<p align="justify" style="font-family:georgia,garamond,serif;font-size:17px;">
+Challenges while conducting therapy sessions:<br> 
+Students with low compliance are unable to follow a given instruction by the teacher. Teachers tend to physically help the students perform these exercises. Despite assigning one teacher for
+every two students, it is still arduous for the teacher to complete a single therapy session. The physical and mental efforts put in by the teachers during therapy sessions are exhausting.<br>
+Students are often seen to be disinterested to perform any physical task. They lack imitation skills to even follow the teacher performing the exercises. Hence, teachers find it highly
+challenging to motivate students to perform any given physical task.<br>
+
+Students lack focus and often lose eye contact with the teacher during therapy sessions. They often get diverted during sessions, due to which they fail to complete a cycle of an exercise. Because of this diverted attention, the efforts of the students to perform exercises turn out
+to be futile and ineffective.<br>
+
+Students find it challenging to even sit or stand on command. Teachers have to verbally prompt commands several times to spawn a reaction from the student. Often, teachers themselves end up
+physically aiding the students in order to motivate them to perform better.<br>
+
+Students are often found to be lethargic and disinterested during therapy sessions. While performing therapy, they often get easily fatigued. Due to lack of stamina, they fail to complete a cycle of exercises.<br>
+
+
+<!--<img src="assets/img/Junction.jpg" width="100%" height="100%"/>
+<img src="assets/img/Selection_012.png" width="100%" height="100%"/>
+</p>-->
+
+
+<h6 id="design" style="font-size:30px;">Success Stories</h6>
+
+<p align="justify" style="font-family:georgia,garamond,serif;font-size:17px;">
+Student I - Exercise became fun with Drones<br>
+Diagnosis: Student I is diagnosed with ADHD and MR <a href="https://otsimo.com/en/mental-retardation-autism/">(for further read)</a> . He is a cognitively bright student but has behavioral issues.<br>
+Regular GMS sessions: He displays reluctance and disinterest to participate, and he prefers to be in isolation during these sessions.<br>
+Drone sessions - He is a tech savvy student who is naturally drawn towards any electronic gadgets and hence was easily motivated to engage himself in gross motor session with Drones.
+Here’s a short video of his teacher narrating his response to Drone therapy sessions<br><br>
+
+Student II - Started to sprint because of the Drone<br>
+Diagnosis: Student II is diagnosed with Autism with ADHD <a href="https://www.additudemag.com/autism-aspergers-adhd-symptoms-in-children/">(for further read)</a>.<br>
+Regular GMS sessions: He is found to under-perform regularly because of his lack of focus and his physical developmental delay,due to this he maintains a clumsy posture and has difficulties sprinting.<br>
+Drone sessions - Pranav found the Drone to be a great stimuli and he often enjoyed performing exercises during Drone sessions. He used to attempt to chase the Drone, thus helping him to sprint on his own. Here’s a short video of Pranav’s teacher narrating his re-
+sponse during Drone therapy sessions (Pranav’s video).<br><br>
+
+Student III - The one who lifts her neck to see the Drone<br>
+Diagnosis: Mythri is diagnosed with Autism Spectrum Disorder.<a href="https://www.nimh.nih.gov/health/topics/autism-spectrum-disorders-asd/index.shtml">(for further read)</a>.<br>
+Regular GMS sessions: She has poor posture control and is often found slouching. Due to her low stimuli and compliance levels, it requires great effort and time for the teachers to make her perform gross motor exercises.
+Drone sessions - Mythri finds the Drone to be a stimuli and performs these exercises with great joy as she is fond of the down wash of the propellers below the Drone (similar to standing under a fan). Hence she automatically moves her neck around (Physio therapy) gazing at the Drone. Here’s a short video of Mythri’s teacher narrating her response during Drone therapy sessions (Mythri’s video)
+
+
+</p>
+
+<h6 id="design" style="font-size:30px;">Conclusion</h6>
+<p align="justify"style="font-family:georgia,garamond,serif;font-size:17px;">
+Conclusion and Future work<br>
+Drone Tech:<br>
+Usage of Drones for autism intervention has been attempted for the first time in this study. Drones were never used as a tool to aid therapy sessions. Moreover since these Drones are programmed to function autonomously, there is no dependency of a pilot to be present during these therapy sessions.<br>
+Small scale study:<br>
+Since there was no relevant literature available, a ’pre and post study’ was conducted to design the overall structure for Drone therapy sessions. The overall engagement of all the students responding to the Drones were pretty insightful. But for a focused study, we narrowed down to seven students. The elementary exercises which were included as a part of the Drone therapy sessions were to answer three key questions. The success stories addresses these questions constructively as follows.<br>
+1. Can Drones spawn some interest among autistic students with GMSD?<br>
+Yes, in fact all the seven students selected for this small scale study were motivated to perform exercises; the reason being that the Drone was a great reinforcer and a successful stimuli.<br>
+2. Can Drones reduce the physical and mental efforts of the teacher conducting therapy?<br>
+If we observe the case of Mythri, the teachers used to spend exhaustive efforts to make the child perform exercises for the therapy. But during the therapy session with Drones it was observed that Mythri was able to mimic the Drone’s actuation or movements. The teacher had to only monitor and issue verbal prompts for her to perform these exercises.<br>
+3. Could Drones be effective and efficient in helping teachers to conduct therapy?<br>
+Each of the three students, part of the success stories, was benefited individually. Student I found the therapy session with Drones to be fun and hence used to look forward to attend them. Student II is student diagnosed with developmental delay and hence used to find difficulties in sprinting. He was found to attempt sprinting while he attended therapy session with Drones. Also the Drone was a successful positive reinforcer for him to look forward to therapy sessions.
+Student III has a significantly bad neck posture where she is often found slouching or gazing towards the ground at most times. She is instructed to perform physiotherapy regularly which is critical for her overall posture. The teacher’s efforts to conduct her physiotherapy is futile. But during Drone sessions Mythri was found to gaze up to the Drone and effortlessly perform the physiotherapy exercises.<br>
+Future Work<br>
+This small scale study provides assurance to conduct a larger scale study with more focused students and increased number of Drone therapy sessions to present better results. The current design and structure of Drone therapy session are easily replicable. If the design of Drone therapy sessions could be personalised by trying to address each individual student’s disability, it can definitely be proven to be more effective. We could also improve and explore additional autonomous capabilities of mini and nano Drones.	
+
+</p>
+
+
+
+
+
+
+
+
+ </div>
+</article>
+
+
+</div>
+
+  <footer><div class="lockup"><div class="content-wrap"><nav><a href="#about-me">About Me</a><a href="#Experenice">Experience</a><a href="#Blog">Blog</a><a href="#Details">Contact Me</a></nav><p class="copyright">Siddharth Ramesh</p></div></div></footer>
+  <script src="../../../../../code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="assets/js/functions.html"></script>
+  <script src="assets/js/main.html"></script>
+  <script src="assets/js/modernizr.html"></script>
+  <script src="assets/js/kudos.html"></script>
+  <script src="../../../../../cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-70467029-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  
+<!-- Mirrored from www.gearoidoconnor.ie/blog/2018/09/17/Tech-stacks-to-date.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Dec 2018 03:42:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Siddharth Ramesh</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <link href="kudos.html" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+
+  <div id="container" class="logo"></div><header id="h_small"><nav id="nav_small"><a href="../../../../index.html#about-me">About Me</a><a href="../../../../index.html#Experenice">Experience</a><a href="../../../../index.html#Blog">Blog</a><a href="../../../../index.html#Details">Contact Me</a></nav></header>
+
+
+<script type="text/javascript">
+			// needs to be a string for jquery.cookie
+			var postId = '1';
+			$(function()
+			{
+				// initialize kudos
+				$("figure.kudoable").kudoable();
+				// check to see if user has already kudod
+				// fyi cookies do not work when you are viewing this as a file
+				if($.cookie(postId) == 'true') {
+					// make kudo already kudod
+					$("figure.kudoable").removeClass("animate").addClass("complete");
+					// your server would take care of the proper kudos count, but because this is a
+					// static page, we need to set it here so it doesn't become -1 when you remove
+					// the kudos after a reload
+					$(".num").html(1);
+				}
+				// when kudoing
+				$("figure.kudo").bind("kudo:active", function(e)
+				{
+					console.log("kudoing active");
+				});
+				// when not kudoing
+				$("figure.kudo").bind("kudo:inactive", function(e)
+				{
+					console.log("kudoing inactive");
+				});
+				// after kudo'd
+				$("figure.kudo").bind("kudo:added", function(e)
+				{
+					var element = $(this);
+					// ajax'y stuff or whatever you want
+					console.log("Kodo'd:", element.data('id'), ":)");
+					// set cookie so user cannot kudo again for 7 days
+					$.cookie(postId, 'true', { expires: 7 });
+				});
+				// after removing a kudo
+				$("figure.kudo").bind("kudo:removed", function(e)
+				{
+					var element = $(this);
+					// ajax'y stuff or whatever you want
+					console.log("Un-Kudo'd:", element.data('id'), ":(");
+					// remove cookie
+					$.removeCookie(postId);
+				});
+			});
+		</script>
+
+
+
+<div class="post-header">
+  <h1 class="post-title">Evolution of the localization testbed</h1>
+</div>
+<div class="post-header">
+  <p class="post-meta"></p>
+</div>
+
+<div class="post-wrapper">
+
+
+
+  <article class="post-content">
+    <div class = "blurb-blog">
+    <h5 id="overview" style="font-size:40px;">Localisation using UWB beacon module DW1000</h5>
+
+<p style="font-family:georgia,garamond,serif;font-size:20px;">The <a href="https://www.decawave.com/product/dw1000-radio-ic/"><u>DW1000</u></a> is the world's first single-chip wireless transceiver based on Ultra Wideband techniques. This chip enables you to develop cost-effective RTLS solutions with precise indoor and outdoor positioning to within 10 cm.<br>
+The task was an attempt to precisely localise a moving drone to aid its navigation in GPS denied environments. Indian Institute of science is a place with thick canopy there we often encounter erreneous GPS data which is not reliable for drone navigation experiments</p>
+
+
+
+<h5 id="Building a development" style="font-size:40px;">Discovering and developing the evaluation board for the DW1000 chip</h5>
+
+<p style="font-family:georgia,garamond,serif;font-size:20px;">Initially started by interfacing the DW1000 chip with various arduino boards, RPis ,Odroid XU4 etc. Finally settled on using STM32 as the formfactor and sampling rate of this microcontroller was ideal. There was a readily available <a href="https://github.com/thotro/arduino-dw1000">  library</a> which helped me to start off with basic 2D ranging experiments and characterise the DW1000 module.</p>
+
+</h5>
+<br>
+
+<div class="image123">
+    <div style="float:left;margin-right:180px;">
+        <img src="assets/img/ard.jpg" height="400" width="300"  />
+        <p style="text-align:center;font-size:15px;">DW1000 (Arduino-pro-mini)</p>
+    </div>
+    <div style="float:left;margin-right:5px;">
+        <img class="middle-img" src="assets/img/stm32.png" height="400" width="250" />
+        <p style="text-align:center;font-size:15px;">DW1000 (STM-32)</p>
+    </div>
+</div>
+<img class="middle-img" src="assets/img/Por.jpg" height="100%" width="95%" />
+        <p style="text-align:center;font-size:15px;">Interfacing the beacon with the Drone</p>
+
+
+<h6 id="characterizing" style="font-size:40px;">Attempt to understand the DW1000 chip's behavior</h6>
+<p style="font-family:georgia,garamond,serif;font-size:20px;">1.With the DW1000 we were able to precisely Localization upto 10 cm accuracy and 300m effective range with 45hz update rate.
+<br>2.High data rates (6.8Mbps) for communication + ranging application<br></p>
+<img src="assets/img/Selection_012.png" width="100%" height="100%"/><p style="text-align:center;font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+         Fig:Experiment setup
+      </p><br><br>
+      
+<img src="assets/img/Selection_011.png" width="100%" height="100%"/><p style="text-align:center;font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+         Fig:Localization results when tested with a Drone.
+      </p><br><br>
+<img src="assets/img/Selection_010.png" width="100%" height="100%"/><p style="text-align:center;font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+         Fig:Histogram plot showing the data recorded at the point 2,2 (ground truth) for 500 samples. 
+      </p><br><br>
+
+
+<div class="honeycombpic">
+
+</div>
+   </div>
+  </article>
+</div>
+
+  <footer><div class="lockup"><div class="content-wrap"><nav><a href="#about-me">About Me</a><a href="#Experenice">Experience</a><a href="#Blog">Blog</a><a href="#Details">Contact Me</a></nav><p class="copyright">Siddharth Ramesh</p></div></div></footer>
+  <script src="../../../../../code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="assets/js/functions.html"></script>
+  <script src="assets/js/main.html"></script>
+  <script src="assets/js/modernizr.html"></script>
+  <script src="assets/js/kudos.html"></script>
+  <script src="../../../../../cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-70467029-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+
+<!-- Mirrored from www.gearoidoconnor.ie/blog/2018/09/17/Tech-stacks-to-date.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Dec 2018 03:42:06 GMT -->
+</html>
